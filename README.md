@@ -1,48 +1,4 @@
-WAP TO CHECK ARMSTRONG OR NOT]]]]]]]
-
-#include <stdio.h>
-#include <math.h>
-
-// Function to calculate the number of digits
-int order(int x) {
-    int n = 0;
-    while (x) {
-        n++;
-        x = x / 10;
-    }
-    return n;
-}
-
-// Function to check whether the given number is an Armstrong number or not
-int isArmstrong(int x) {
-    int n = order(x);
-    int temp = x, sum = 0;
-    while (temp) {
-        int r = temp % 10;
-        sum += pow(r, n);
-        temp = temp / 10;
-    }
-    return (sum == x);
-}
-
-// Driver Code
-int main() {
-    int x;
-    printf("Enter a number: ");
-    scanf("%d", &x);
-    
-    if (isArmstrong(x)) {
-        printf("%d is an Armstrong number.\n", x);
-    } else {
-        printf("%d is not an Armstrong number.\n", x);
-    }
-    
-    return 0;
-}
-
-WAP to accept basic salary from the keyboard. Calculate the gross salary that includes basic salary, 50% DA and 40% HRA in c]]]]]]]]]]]]]
-
-
+WAP to accept basic salary from the keyboard. Calculate the gross salary that includes basic salary, 50% DA and 40% HRA in c\\\\\\\\\
 #include <stdio.h>
 
 int main() {
@@ -68,149 +24,238 @@ int main() {
     return 0;
 }
 
-C Program to Store Information of a Student Using Structure.]]]]]]]]]]]]
+WAP to display the CLASS of students according to range given. Take 3 subject marks as input from user.
+Distinction if avg_marks >=70
+FIRST CLASS if avg_marks >=60 and less than 70
+SECOND CLASS if avg_marks >=40 and less than 60
+FAIL if avg_marks <40\\\\\\\\\\
+
+#include <stdio.h>
+
+int main() {
+    float marks1, marks2, marks3, avg_marks;
+
+    // Input marks for three subjects
+    printf("Enter marks for three subjects:\n");
+    printf("Subject 1: ");
+    scanf("%f", &marks1);
+    printf("Subject 2: ");
+    scanf("%f", &marks2);
+    printf("Subject 3: ");
+    scanf("%f", &marks3);
+
+    // Calculate average marks
+    avg_marks = (marks1 + marks2 + marks3) / 3;
+
+    // Display the average marks
+    printf("Average Marks: %.2f\n", avg_marks);
+
+    // Determine and display the class based on average marks
+    if (avg_marks >= 70) {
+        printf("Class: Distinction\n");
+    } else if (avg_marks >= 60) {
+        printf("Class: First Class\n");
+    } else if (avg_marks >= 40) {
+        printf("Class: Second Class\n");
+    } else {
+        printf("Class: Fail\n");
+    }
+
+    return 0;
+}
+
+
+Write a program to check whether the entered number is Armstrong or not.\\\\\\\\
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int number, originalNumber, remainder, n = 0, result = 0;
+
+    // Input a number from the user
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+
+    originalNumber = number;
+
+    // Count the number of digits
+    while (originalNumber != 0) {
+        originalNumber /= 10;
+        n++;
+    }
+
+    originalNumber = number;
+
+    // Calculate the sum of the nth powers of its digits
+    while (originalNumber != 0) {
+        remainder = originalNumber % 10;
+        result += pow(remainder, n);
+        originalNumber /= 10;
+    }
+
+    // Check if the number is an Armstrong number
+    if (result == number) {
+        printf("%d is an Armstrong number.\n", number);
+    } else {
+        printf("%d is not an Armstrong number.\n", number);
+    }
+
+    return 0;
+}
+
+Write a program to compute i) Square root of number ii)Square of number using switch.\\\\\\\\\\\
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int choice;
+    double number, result;
+
+    // Display menu
+    printf("Choose an option:\n");
+    printf("1. Calculate Square Root\n");
+    printf("2. Calculate Square\n");
+    printf("Enter your choice (1 or 2): ");
+    scanf("%d", &choice);
+
+    // Input the number
+    printf("Enter a number: ");
+    scanf("%lf", &number);
+
+    // Switch statement to perform the chosen operation
+    switch (choice) {
+        case 1:
+            if (number < 0) {
+                printf("Error: Square root of a negative number is not defined.\n");
+            } else {
+                result = sqrt(number);
+                printf("Square Root of %.2f is %.2f\n", number, result);
+            }
+            break;
+        case 2:
+            result = number * number;
+            printf("Square of %.2f is %.2f\n", number, result);
+            break;
+        default:
+            printf("Invalid choice! Please enter 1 or 2.\n");
+            break;
+    }
+
+    return 0;
+}
+
+
+WAP to accepts a string from user and to perform Equality check of two string operation\\\\\\\\\\\\
+
 
 #include <stdio.h>
 #include <string.h>
 
-// Define a structure to hold student information
-struct Student {
-    char name[50];
-    int roll_number;
-    float marks;
-};
-
 int main() {
-    struct Student student; // Declare a variable of type Student
+    char str1[100], str2[100];
 
-    // Input student information
-    printf("Enter Student Name: ");
-    fgets(student.name, sizeof(student.name), stdin); // Read string input
-    student.name[strcspn(student.name, "\n")] = 0; // Remove newline character
-
-    printf("Enter Roll Number: ");
-    scanf("%d", &student.roll_number);
-
-    printf("Enter Marks: ");
-    scanf("%f", &student.marks);
-
-    // Display student information
-    printf("\nStudent Information:\n");
-    printf("Name: %s\n", student.name);
-    printf("Roll Number: %d\n", student.roll_number);
-    printf("Marks: %.2f\n", student.marks);
-
-    return 0;
-}
-
-Write a function for addition of two numbers.]]]]]]]]
-
-#include <stdio.h>
-
-// Function to add two numbers
-float add(float a, float b) {
-    return a + b; // Return the sum of a and b
-}
-
-int main() {
-    float num1, num2, sum;
-
-    // Input two numbers from the user
-    printf("Enter first number: ");
-    scanf("%f", &num1);
+    // Input first string
+    printf("Enter the first string: ");
+    fgets(str1, sizeof(str1), stdin);
     
-    printf("Enter second number: ");
-    scanf("%f", &num2);
+    // Remove newline character from the string if present
+    str1[strcspn(str1, "\n")] = 0;
 
-    // Call the add function
-    sum = add(num1, num2);
+    // Input second string
+    printf("Enter the second string: ");
+    fgets(str2, sizeof(str2), stdin);
+    
+    // Remove newline character from the string if present
+    str2[strcspn(str2, "\n")] = 0;
 
-    // Display the result
-    printf("The sum of %.2f and %.2f is: %.2f\n", num1, num2, sum);
+    // Check for equality
+    if (strcmp(str1, str2) == 0) {
+        printf("The two strings are equal.\n");
+    } else {
+        printf("The two strings are not equal.\n");
+    }
 
     return 0;
 }
 
 
-Write a program to perform transpose of 3X3 matrices]]]]]]]]
+Write a program to perform addition of two 3X3 matrices.\\\\\\\\\\\
 
 #include <stdio.h>
 
-#define SIZE 3 // Define the size of the matrix
+#define SIZE 3  // Define the size of the matrix
 
-// Function to print the matrix
-void printMatrix(int matrix[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            printf("%d ", matrix[i][j]);
+int main() {
+    int matrix1[SIZE][SIZE], matrix2[SIZE][SIZE], sum[SIZE][SIZE];
+    int i, j;
+
+    // Input elements of the first matrix
+    printf("Enter elements of the first 3x3 matrix:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("Element [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matrix1[i][j]);
+        }
+    }
+
+    // Input elements of the second matrix
+    printf("Enter elements of the second 3x3 matrix:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("Element [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matrix2[i][j]);
+        }
+    }
+
+    // Calculate the sum of the two matrices
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            sum[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+
+    // Display the resulting matrix
+    printf("Sum of the two matrices:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("%d ", sum[i][j]);
         }
         printf("\n");
     }
-}
-
-// Function to calculate the transpose of the matrix
-void transposeMatrix(int matrix[SIZE][SIZE], int transposed[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            transposed[j][i] = matrix[i][j]; // Swap rows and columns
-        }
-    }
-}
-
-int main() {
-    int matrix[SIZE][SIZE], transposed[SIZE][SIZE];
-
-    // Input elements of the matrix
-    printf("Enter elements of the 3x3 matrix:\n");
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            printf("Element [%d][%d]: ", i + 1, j + 1);
-            scanf("%d", &matrix[i][j]);
-        }
-    }
-
-    // Calculate the transpose
-    transposeMatrix(matrix, transposed);
-
-    // Display the original matrix
-    printf("\nOriginal Matrix:\n");
-    printMatrix(matrix);
-
-    // Display the transposed matrix
-    printf("\nTransposed Matrix:\n");
-    printMatrix(transposed);
-
-    return 0;
-
-    WAP to accept from user the number of Fibonacci numbers to be generated and print the Fibonacci series using recursion]]]]]]]]]
-
-    #include <stdio.h>
-
-// Function to calculate the nth Fibonacci number using recursion
-int fibonacci(int n) {
-    if (n == 0) {
-        return 0; // Base case: F(0) = 0
-    } else if (n == 1) {
-        return 1; // Base case: F(1) = 1
-    } else {
-        return fibonacci(n - 1) + fibonacci(n - 2); // Recursive case
-    }
-}
-
-int main() {
-    int count;
-
-    // Input the number of Fibonacci numbers to generate
-    printf("Enter the number of Fibonacci numbers to generate: ");
-    scanf("%d", &count);
-
-    // Print the Fibonacci series
-    printf("Fibonacci Series:\n");
-    for (int i = 0; i < count; i++) {
-        printf("%d ", fibonacci(i));
-    }
-    printf("\n");
 
     return 0;
 }
+
+
+WAP to accepts a string from user and to calculate length of string without using string functions\\\\\\\\\\\\
+
+#include <stdio.h>
+
+int main() {
+    char str[100];  // Array to store the input string
+    int length = 0; // Variable to store the length of the string
+    char ch;
+
+    // Input the string from the user
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Calculate the length of the string manually
+    // Loop until we encounter the null character '\0'
+    while (str[length] != '\0') {
+        // Check for the newline character added by fgets
+        if (str[length] == '\n') {
+            break; // Stop counting if we hit a newline
+        }
+        length++; // Increment the length for each character
+    }
+
+    // Output the length of the string
+    printf("The length of the string is: %d\n", length);
+
+    return 0;
+}
+
 
